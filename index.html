@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mengarungi Samudra Langit — Art Exhibition</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #02030a;
+    color: #f4f0ff;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+/* ===== GALAXY BACKGROUND ===== */
+
+#space {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(79, 46, 130, .28), transparent 28%),
+        radial-gradient(circle at 80% 65%, rgba(28, 67, 130, .25), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(93, 42, 126, .20), transparent 35%),
+        #02030a;
+}
+
+.stars,
+.stars::before,
+.stars::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background-repeat: repeat;
+}
+
+.stars {
+    background-image:
+        radial-gradient(circle, #fff 1px, transparent 1.5px);
+    background-size: 97px 113px;
+    opacity: .55;
+    animation: drift 80s linear infinite;
+}
+
+.stars::before {
+    background-image:
+        radial-gradient(circle, #cbbcff 1px, transparent 1.5px);
+    background-size: 157px 181px;
+    opacity: .45;
+    animation: drift 120s linear infinite reverse;
+}
+
+.stars::after {
+    background-image:
+        radial-gradient(circle, #fff 1.2px, transparent 1.8px);
+    background-size: 237px 203px;
+    opacity: .35;
+}
+
+@keyframes drift {
+    from { transform: translateY(0); }
+    to { transform: translateY(-300px); }
+}
+
+/* ===== NEBULA ===== */
+
+.nebula {
+    position: fixed;
+    width: 550px;
+    height: 550px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: .16;
+    pointer-events: none;
+}
+
+.nebula.one {
+    background: #7549c8;
+    top: -250px;
+    left: -180px;
+}
+
+.nebula.two {
+    background: #2864b9;
+    right: -220px;
+    bottom: -150px;
+}
+
+/* ===== MUSIC ===== */
+
+.music-btn {
+    position: fixed;
+    right: 22px;
+    top: 22px;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(200,180,255,.35);
+    border-radius: 50%;
+    background: rgba(8,7,20,.75);
+    color: white;
+    cursor: pointer;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    transition: .3s;
+}
+
+.music-btn:hover {
+    transform: scale(1.08);
+    background: rgba(80,55,130,.7);
+}
+
+/* ===== PAGE SYSTEM ===== */
+
+.page {
+    display: none;
+    min-height: 100vh;
+    padding: 80px 22px 50px;
+    animation: pageIn .7s ease;
+}
+
+.page.active {
+    display: flex;
+}
+
+@keyframes pageIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    width: min(100%, 1000px);
+    margin: auto;
+}
+
+/* ===== HOME ===== */
+
+.home {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.home-content {
+    max-width: 850px;
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #b9a8e8;
+    margin-bottom: 24px;
+}
+
+.home h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(45px, 8vw, 92px);
+    line-height: .94;
+    font-weight: 500;
+    text-shadow:
+        0 0 20px rgba(155,110,255,.4),
+        0 0 60px rgba(100,60,190,.2);
+}
+
+.home h1 span {
+    display: block;
+    font-size: .45em;
+    margin-top: 24px;
+    color: #c9bfdd;
+    letter-spacing: 4px;
+    line-height: 1.3;
+}
+
+.intro {
+    max-width: 650px;
+    margin: 35px auto;
+    color: #aaa4b9;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.enter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 28px;
+    border: 1px solid rgba(185,160,255,.45);
+    border-radius: 50px;
+    color: white;
+    background: rgba(71,46,116,.3);
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: .3s;
+}
+
+.enter-btn:hover {
+    background: rgba(108,72,170,.5);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(100,60,180,.2);
+}
+
+/* ===== NAV ===== */
+
+.nav {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    z-index: 90;
+    display: flex;
+    gap: 5px;
+    padding: 7px;
+    border: 1px solid rgba(160,140,210,.18);
+    border-radius: 50px;
+    background: rgba(7,6,16,.78);
+    backdrop-filter: blur(15px);
+}
+
+.nav button {
+    border: 0;
+    background: transparent;
+    color: #8f899e;
+    padding: 10px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    transition: .3s;
+}
+
+.nav button:hover,
+.nav button.active {
+    background: rgba(112,76,170,.35);
+    color: white;
+}
+
+/* ===== GENERAL ===== */
+
+.section-label {
+    color: #a997d4;
+    letter-spacing: 4px;
+    font-size: 10px;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 6vw, 64px);
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.section-description {
+    color: #aaa4b9;
+    font-size: 13px;
+    line-height: 1.9;
+    max-width: 650px;
+}
+
+.glass {
+    background: rgba(9,8,19,.68);
+    border: 1px solid rgba(150,130,200,.17);
+    border-radius: 25px;
+    padding: 35px;
+    backdrop-filter: blur(12px);
+}
+
+/* ===== COSMIC MAP ===== */
+
+.cosmic-map {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.planet-card {
+    border: 0;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+}
+
+.planet {
+    width: min(100%, 190px);
+    aspect-ratio: 1;
+    margin: auto;
+    border-radius: 50%;
+    position: relative;
+    transition: .4s;
+}
+
+.planet-card:hover .planet {
+    transform: translateY(-10px) scale(1.06);
+}
+
+.planet.one {
+    background:
+        radial-gradient(circle at 30% 28%, #e9d5b7 0 4%, transparent 5%),
+        radial-gradient(circle at 60% 65%, #916e61 0 10%, transparent 11%),
+        radial-gradient(circle at 40% 45%, #b99a85 0 8%, transparent 9%),
+        linear-gradient(130deg, #d3a57c, #513c4c);
+    box-shadow: inset -25px -25px 45px rgba(0,0,0,.6), 0 0 45px rgba(174,130,105,.15);
+}
+
+.planet.two {
+    background:
+        radial-gradient(circle at 30% 25%, #d9e4ff 0 5%, transparent 6%),
+        radial-gradient(circle at 65% 65%, #596ca7 0 14%, transparent 15%),
+        linear-gradient(130deg, #8ca8d9, #222b60);
+    box-shadow: inset -25px -25px 45px rgba(0,0,0,.65), 0 0 45px rgba(95,125,220,.18);
+}
+
+.planet.three {
+    background:
+        radial-gradient(circle at 32% 30%, #efccff 0 4%, transparent 5%),
+        radial-gradient(circle at 63% 58%, #8050a0 0 15%, transparent 16%),
+        linear-gradient(130deg, #bd8ee1, #382047);
+    box-shadow: inset -25px -25px 45px rgba(0,0,0,.65), 0 0 45px rgba(170,90,220,.18);
+}
+
+.planet-name {
+    margin-top: 18px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+}
+
+.planet-sub {
+    margin-top: 5px;
+    font-size: 10px;
+    color: #858092;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ===== GALLERY ===== */
+
+.gallery {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.art {
+    min-height: 270px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(160,140,210,.18);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.art:hover {
+    transform: translateY(-5px);
+    border-color: rgba(185,160,255,.5);
+}
+
+.art:nth-child(1) {
+    background:
+        radial-gradient(circle at 68% 30%, #eee5ff 0 5%, transparent 6%),
+        radial-gradient(circle at 60% 32%, #8e68cb 0 17%, transparent 18%),
+        radial-gradient(circle at 30% 70%, #314879 0 20%, transparent 21%),
+        #070711;
+}
+
+.art:nth-child(2) {
+    background:
+        radial-gradient(circle at 30% 30%, #e6d2ff 0 4%, transparent 5%),
+        radial-gradient(circle at 45% 55%, #5b3d91 0 25%, transparent 26%),
+        radial-gradient(circle at 80% 70%, #1d466d 0 15%, transparent 16%),
+        #060711;
+}
+
+.art:nth-child(3) {
+    background:
+        radial-gradient(circle at 50% 45%, #d9e9ff 0 8%, transparent 9%),
+        radial-gradient(circle at 50% 45%, #536ea9 0 20%, transparent 21%),
+        linear-gradient(145deg,#0b1225,#26133d);
+}
+
+.art:nth-child(4) {
+    background:
+        radial-gradient(circle at 70% 35%, #f2d8b2 0 7%, transparent 8%),
+        radial-gradient(circle at 40% 60%, #583f88 0 25%, transparent 26%),
+        #070711;
+}
+
+.art-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,.85));
+}
+
+.art-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.art-info p {
+    color: #aaa4b9;
+    font-size: 10px;
+    margin-top: 4px;
+}
+
+/* ===== EVENT ===== */
+
+.event-grid {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.event-box {
+    padding: 25px;
+    border: 1px solid rgba(160,140,210,.16);
+    border-radius: 18px;
+    background: rgba(15,12,27,.55);
+}
+
+.event-box small {
+    color: #8d849d;
+    letter-spacing: 2px;
+    font-size: 9px;
+}
+
+.event-box strong {
+    display: block;
+    margin-top: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.map-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 13px 22px;
+    border-radius: 40px;
+    border: 1px solid rgba(185,160,255,.35);
+    color: white;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+/* ===== MESSAGE ===== */
+
+.quote {
+    margin-top: 40px;
+    padding: 35px;
+    border-left: 1px solid #8062ae;
+    background: linear-gradient(90deg, rgba(82,56,120,.18), transparent);
+}
+
+.quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(25px, 4vw, 38px);
+    line-height: 1.35;
+}
+
+/* ===== MODAL ===== */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0,0,0,.78);
+    backdrop-filter: blur(8px);
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    width: min(100%, 500px);
+    padding: 35px;
+    border: 1px solid rgba(180,155,230,.3);
+    border-radius: 25px;
+    background: #0b0915;
+    text-align: center;
+    animation: modalIn .4s ease;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: scale(.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-box h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 35px;
+    margin: 15px 0;
+}
+
+.modal-box p {
+    color: #aaa4b9;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.close {
+    float: right;
+    border: 0;
+    background: transparent;
+    color: #aaa;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 650px) {
+
+    .page {
+        padding: 75px 16px 100px;
+    }
+
+    .glass {
+        padding: 24px 18px;
+    }
+
+    .cosmic-map {
+        gap: 12px;
+    }
+
+    .planet-name {
+        font-size: 18px;
+    }
+
+    .planet-sub {
+        font-size: 8px;
+    }
+
+    .gallery {
+        gap: 10px;
+    }
+
+    .art {
+        min-height: 190px;
+    }
+
+    .event-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav {
+        max-width: calc(100% - 18px);
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+
+    .nav button {
+        white-space: nowrap;
+        padding: 9px 11px;
+        font-size: 9px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="space">
+    <div class="stars"></div>
+</div>
+
+<div class="nebula one"></div>
+<div class="nebula two"></div>
+
+<button class="music-btn" id="musicBtn" title="Musik">♫</button>
+
+
+<!-- ================= HOME ================= -->
+
+<section class="page home active" id="home">
+    <div class="home-content">
+
+        <div class="eyebrow">
+            An Art Exhibition · 25 October 2026
+        </div>
+
+        <h1>
+            Mengarungi<br>
+            Samudra Langit
+
+            <span>
+                Menemukan Iman di Keajaiban<br>
+                Dibalik Hamparan Semesta
+            </span>
+        </h1>
+
+        <p class="intro">
+            Di antara luasnya semesta dan keheningan langit,
+            mari berhenti sejenak untuk melihat keindahan,
+            merasakan keajaiban, dan menemukan jejak kebesaran
+            Sang Pencipta melalui karya seni.
+        </p>
+
+        <button class="enter-btn" onclick="goTo('explore')">
+            Masuki Pameran
+            <span>→</span>
+        </button>
+
+    </div>
+</section>
+
+
+<!-- ================= EXPLORE ================= -->
+
+<section class="page" id="explore">
+    <div class="container">
+
+        <div class="section-label">
+            SEKTOR 01 · CELESTIAL MAP
+        </div>
+
+        <h2 class="section-title">
+            Jelajahi Semesta
+        </h2>
+
+        <p class="section-description">
+            Setiap planet menyimpan sebuah fragmen perjalanan.
+            Klik dan temukan pesan yang tersembunyi di baliknya.
+        </p>
+
+        <div class="cosmic-map">
+
+            <button class="planet-card"
+                onclick="openModal(
+                'Nebula Iman',
+                'Keindahan yang tampak jauh ternyata dapat menjadi jalan untuk semakin dekat kepada-Nya.'
+                )">
+
+                <div class="planet one"></div>
+
+                <div class="planet-name">
+                    Nebula Iman
+                </div>
+
+                <div class="planet-sub">
+                    Fragment I
+                </div>
+
+            </button>
+
+
+            <button class="planet-card"
+                onclick="openModal(
+                'Orbit Renungan',
+                'Tidak semua perjalanan harus dipahami sekaligus. Kadang kita hanya perlu terus berjalan sambil percaya.'
+                )">
+
+                <div class="planet two"></div>
+
+                <div class="planet-name">
+                    Orbit Renungan
+                </div>
+
+                <div class="planet-sub">
+                    Fragment II
+                </div>
+
+            </button>
+
+
+            <button class="planet-card"
+                onclick="openModal(
+                'Galaksi Syukur',
+                'Di balik luasnya langit, selalu ada alasan untuk berhenti sejenak dan bersyukur.'
+                )">
+
+                <div class="planet three"></div>
+
+                <div class="planet-name">
+                    Galaksi Syukur
+                </div>
+
+                <div class="planet-sub">
+                    Fragment III
+                </div>
+
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= GALLERY ================= -->
+
+<section class="page" id="gallery">
+    <div class="container">
+
+        <div class="section-label">
+            SEKTOR 02 · THE EXHIBITION
+        </div>
+
+        <h2 class="section-title">
+            Karya yang Menjadi Bintang
+        </h2>
+
+        <p class="section-description">
+            Setiap karya adalah sebuah jendela kecil menuju
+            luasnya semesta. Klik karya untuk membacanya lebih dekat.
+        </p>
+
+        <div class="gallery">
+
+            <button class="art"
+                onclick="openModal(
+                'Genesis of Light',
+                'Tentang cahaya sebagai simbol petunjuk di tengah luasnya kegelapan.'
+                )">
+
+                <div class="art-info">
+                    <h3>Genesis of Light</h3>
+                    <p>THE BEGINNING</p>
+                </div>
+
+            </button>
+
+
+            <button class="art"
+                onclick="openModal(
+                'Silent Orbit',
+                'Tentang perjalanan yang sunyi, tetapi tidak pernah benar-benar sendiri.'
+                )">
+
+                <div class="art-info">
+                    <h3>Silent Orbit</h3>
+                    <p>THE JOURNEY</p>
+                </div>
+
+            </button>
+
+
+            <button class="art"
+                onclick="openModal(
+                'Beyond the Blue',
+                'Sebuah ruang untuk memandang biru yang tak berujung dan merenungkan kebesaran ciptaan.'
+                )">
+
+                <div class="art-info">
+                    <h3>Beyond the Blue</h3>
+                    <p>THE VASTNESS</p>
+                </div>
+
+            </button>
+
+
+            <button class="art"
+                onclick="openModal(
+                'The Vastness',
+                'Ketika luasnya semesta membuat manusia sadar akan kecilnya diri dan besarnya kuasa-Nya.'
+                )">
+
+                <div class="art-info">
+                    <h3>The Vastness</h3>
+                    <p>THE REFLECTION</p>
+                </div>
+
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= EVENT ================= -->
+
+<section class="page" id="event">
+    <div class="container">
+
+        <div class="section-label">
+            SEKTOR 03 · COORDINATES
+        </div>
+
+        <h2 class="section-title">
+            Detail Perjalanan
+        </h2>
+
+        <p class="section-description">
+            Catat koordinat perjalananmu menuju ruang pameran.
+        </p>
+
+        <div class="glass" style="margin-top:35px">
+
+            <div class="event-grid">
+
+                <div class="event-box">
+                    <small>DATE</small>
+                    <strong>
+                        25 OCTOBER 2026
+                    </strong>
+                </div>
+
+                <div class="event-box">
+                    <small>TIME</small>
+                    <strong>
+                        08.00 – 12.00 WIB
+                    </strong>
+                </div>
+
+                <div class="event-box">
+                    <small>VENUE</small>
+                    <strong>
+                        Auning Mubarak
+                    </strong>
+                </div>
+
+                <div class="event-box">
+                    <small>EVENT</small>
+                    <strong>
+                        Art Exhibition
+                    </strong>
+                </div>
+
+            </div>
+
+            <!-- GANTI LINK INI DENGAN GOOGLE MAPS KAMU -->
+
+            <a
+                class="map-btn"
+                href="#"
+                onclick="alert('Nanti masukkan link Google Maps lokasi Auning Mubarak di bagian href tombol ini.'); return false;"
+            >
+                ⌖ Buka Lokasi
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= MESSAGE ================= -->
+
+<section class="page" id="message">
+    <div class="container">
+
+        <div class="section-label">
+            SEKTOR 04 · REFLECTION
+        </div>
+
+        <h2 class="section-title">
+            Sampai Jumpa<br>
+            di Bawah Langit
+        </h2>
+
+        <div class="quote">
+
+            <p>
+                “Mengarungi samudra langit,
+                menemukan iman di keajaiban
+                dibalik hamparan semesta.”
+            </p>
+
+        </div>
+
+        <p class="section-description" style="margin-top:30px">
+            Kami mengundangmu untuk datang, melihat,
+            merasakan, dan menemukan makna di balik
+            setiap karya.
+        </p>
+
+        <div style="
+            margin-top:45px;
+            color:#817995;
+            font-size:11px;
+            letter-spacing:3px;
+        ">
+            25 · 10 · 2026
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav class="nav">
+
+    <button class="active" onclick="goTo('home')">
+        ✦ Beranda
+    </button>
+
+    <button onclick="goTo('explore')">
+        ◉ Jelajahi
+    </button>
+
+    <button onclick="goTo('gallery')">
+        ✧ Karya
+    </button>
+
+    <button onclick="goTo('event')">
+        ⌖ Acara
+    </button>
+
+    <button onclick="goTo('message')">
+        ☽ Pesan
+    </button>
+
+</nav>
+
+
+<!-- ================= MODAL ================= -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeModal()">
+            ×
+        </button>
+
+        <div class="eyebrow">
+            CELESTIAL FRAGMENT
+        </div>
+
+        <h2 id="modalTitle">
+            Title
+        </h2>
+
+        <p id="modalText">
+            Text
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ================= PAGE NAVIGATION ================= */
+
+function goTo(page) {
+
+    document.querySelectorAll('.page').forEach(function(section) {
+        section.classList.remove('active');
+    });
+
+    const target = document.getElementById(page);
+
+    if (target) {
+        target.classList.add('active');
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    document.querySelectorAll('.nav button').forEach(function(button) {
+        button.classList.remove('active');
+    });
+
+    const buttons = document.querySelectorAll('.nav button');
+
+    buttons.forEach(function(button) {
+
+        if (button.getAttribute('onclick') === "goTo('" + page + "')") {
+            button.classList.add('active');
+        }
+
+    });
+}
+
+
+/* ================= MODAL ================= */
+
+function openModal(title, text) {
+
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalText').textContent = text;
+
+    document.getElementById('modal').classList.add('show');
+}
+
+
+function closeModal() {
+
+    document.getElementById('modal').classList.remove('show');
+
+}
+
+
+document.getElementById('modal').addEventListener('click', function(event) {
+
+    if (event.target === this) {
+        closeModal();
+    }
+
+});
+
+
+/* ================= GALAXY MUSIC ================= */
+
+let audioContext;
+let oscillators = [];
+let playing = false;
+
+function startMusic() {
+
+    if (!audioContext) {
+        audioContext = new (
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+    }
+
+    const frequencies = [
+        130.81,
+        164.81,
+        196.00,
+        246.94
+    ];
+
+    frequencies.forEach(function(freq, index) {
+
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+
+        oscillator.type = 'sine';
+        oscillator.frequency.value = freq;
+
+        gain.gain.value = 0.018;
+
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+
+        oscillator.start();
+
+        oscillators.push({
+            oscillator: oscillator,
+            gain: gain
+        });
+
+    });
+
+}
+
+
+function stopMusic() {
+
+    oscillators.forEach(function(item) {
+
+        try {
+            item.oscillator.stop();
+        } catch (error) {}
+
+    });
+
+    oscillators = [];
+
+}
+
+
+document.getElementById('musicBtn').addEventListener('click', function() {
+
+    if (!playing) {
+
+        startMusic();
+
+        playing = true;
+
+        this.textContent = 'Ⅱ';
+
+    } else {
+
+        stopMusic();
+
+        playing = false;
+
+        this.textContent = '♫';
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
