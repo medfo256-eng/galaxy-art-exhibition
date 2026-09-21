@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mengarungi Samudra Langit — Art Exhibition</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#030712;
+    --bg2:#071225;
+    --text:#eef4ff;
+    --muted:#aebbd0;
+    --line:rgba(255,255,255,.14);
+    --glass:rgba(8,17,37,.62);
+    --accent:#9cc9ff;
+    --accent2:#d9c7ff;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        radial-gradient(circle at 20% 15%,rgba(83,126,255,.18),transparent 25%),
+        radial-gradient(circle at 80% 30%,rgba(177,109,255,.13),transparent 25%),
+        linear-gradient(180deg,#02050d,#071225 48%,#02050d);
+
+    color:var(--text);
+    font-family:Montserrat,Arial,sans-serif;
+    overflow-x:hidden;
+}
+
+/* STAR BACKGROUND */
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+
+    background-image:
+        radial-gradient(#fff 1px,transparent 1px),
+        radial-gradient(#b8d7ff 1px,transparent 1px);
+
+    background-size:110px 110px,170px 170px;
+    background-position:10px 20px,60px 80px;
+
+    opacity:.22;
+
+    animation:drift 24s linear infinite;
+}
+
+@keyframes drift{
+    to{
+        background-position:130px 140px,0 0;
+    }
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+}
+
+section{
+    padding:90px 7vw;
+    position:relative;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+.eyebrow{
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    font-size:11px;
+    color:var(--accent);
+    margin-bottom:16px;
+}
+
+h1,
+h2,
+h3{
+    font-family:"Cormorant Garamond",serif;
+}
+
+h1{
+    font-size:clamp(52px,9vw,105px);
+    line-height:.86;
+    font-weight:500;
+}
+
+h2{
+    font-size:clamp(40px,6vw,70px);
+    line-height:.95;
+}
+
+h3{
+    font-size:30px;
+}
+
+p{
+    line-height:1.8;
+    color:var(--muted);
+}
+
+/* BUTTON */
+
+.primary-btn,
+.come-button,
+.submit-btn{
+    border:1px solid rgba(190,216,255,.5);
+    color:#fff;
+    background:rgba(137,181,255,.13);
+
+    padding:14px 22px;
+    border-radius:999px;
+
+    cursor:pointer;
+    transition:.25s;
+
+    backdrop-filter:blur(10px);
+}
+
+.primary-btn:hover,
+.come-button:hover,
+.submit-btn:hover{
+    transform:translateY(-2px);
+    background:rgba(137,181,255,.22);
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+.hero-inner{
+    max-width:1000px;
+    margin:auto;
+}
+
+.hero h1{
+    margin-bottom:28px;
+}
+
+.hero-title{
+    font-style:italic;
+}
+
+.hero-subtitle{
+    max-width:720px;
+    margin:0 auto 34px;
+    font-size:15px;
+}
+
+.event-meta{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:34px;
+}
+
+.pill{
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.045);
+
+    padding:11px 17px;
+    border-radius:999px;
+
+    color:#dce8ff;
+    font-size:12px;
+}
+
+.scroll-note{
+    margin-top:30px;
+    font-size:11px;
+    letter-spacing:.18em;
+    color:#71819a;
+}
+
+/* NAVIGATION */
+
+.nav{
+    position:fixed;
+    left:50%;
+    bottom:20px;
+    transform:translateX(-50%);
+
+    z-index:50;
+
+    display:flex;
+    gap:4px;
+
+    padding:6px;
+
+    border:1px solid var(--line);
+    border-radius:999px;
+
+    background:rgba(2,7,18,.72);
+    backdrop-filter:blur(16px);
+}
+
+.nav a{
+    padding:10px 14px;
+    font-size:11px;
+    color:#b7c4d8;
+    border-radius:999px;
+}
+
+.nav a:hover{
+    background:rgba(255,255,255,.08);
+    color:white;
+}
+
+/* SECTION */
+
+.section-head{
+    text-align:center;
+    max-width:720px;
+    margin:0 auto 50px;
+}
+
+.section-head p{
+    margin-top:18px;
+}
+
+/* PLANET CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.card{
+    min-height:300px;
+    padding:28px;
+
+    border:1px solid var(--line);
+    border-radius:24px;
+
+    background:var(--glass);
+    backdrop-filter:blur(12px);
+
+    position:relative;
+    overflow:hidden;
+}
+
+.card:after{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    right:-70px;
+    top:-70px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(153,197,255,.25),
+            transparent 68%
+        );
+}
+
+.planet{
+    width:88px;
+    height:88px;
+
+    border-radius:50%;
+
+    margin-bottom:24px;
+
+    background:
+        radial-gradient(circle at 32% 28%,#e7eaff 0 5%,transparent 6%),
+        radial-gradient(circle at 58% 42%,#7d88b9 0 11%,transparent 12%),
+        radial-gradient(circle at 35% 65%,#4f5d91 0 13%,transparent 14%),
+        linear-gradient(145deg,#c9d9ff,#465687 55%,#151c40);
+
+    box-shadow:
+        0 0 35px rgba(126,169,255,.35);
+}
+
+.card p{
+    margin-top:10px;
+    font-size:13px;
+}
+
+/* GALLERY */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.art{
+    min-height:240px;
+
+    border-radius:24px;
+    border:1px solid var(--line);
+
+    padding:28px;
+
+    display:flex;
+    align-items:flex-end;
+
+    background:
+        radial-gradient(
+            circle at 70% 25%,
+            rgba(255,255,255,.25),
+            transparent 10%
+        ),
+        radial-gradient(
+            circle at 30% 50%,
+            rgba(75,117,255,.35),
+            transparent 28%
+        ),
+        linear-gradient(145deg,#101d3e,#040711 65%);
+}
+
+.art:nth-child(2){
+    background:
+        radial-gradient(
+            circle at 25% 30%,
+            rgba(202,180,255,.35),
+            transparent 15%
+        ),
+        radial-gradient(
+            circle at 65% 65%,
+            rgba(71,125,255,.28),
+            transparent 25%
+        ),
+        linear-gradient(145deg,#171333,#040711 68%);
+}
+
+.art small{
+    color:#bdcbe1;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+}
+
+/* EVENT */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.info-box{
+    border:1px solid var(--line);
+
+    background:var(--glass);
+
+    border-radius:24px;
+
+    padding:30px;
+}
+
+.info-box strong{
+    display:block;
+    margin:8px 0 18px;
+    font-size:19px;
+}
+
+.info-box span{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.8;
+}
+
+/* MUSIC */
+
+.music-panel{
+    max-width:760px;
+
+    margin:40px auto 0;
+
+    padding:18px 20px;
+
+    border:1px solid var(--line);
+    border-radius:22px;
+
+    background:rgba(6,14,31,.72);
+
+    backdrop-filter:blur(12px);
+}
+
+.music-row{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.music-note{
+    font-size:27px;
+}
+
+.music-info{
+    flex:1;
+}
+
+.music-info strong{
+    display:block;
+
+    font-size:13px;
+
+    letter-spacing:.12em;
+}
+
+.music-info span{
+    display:block;
+
+    color:#8493aa;
+
+    font-size:11px;
+
+    margin-top:5px;
+}
+
+.music-button{
+    border:1px solid var(--line);
+
+    background:rgba(255,255,255,.06);
+
+    color:#fff;
+
+    padding:10px 15px;
+
+    border-radius:999px;
+
+    cursor:pointer;
+}
+
+.audio-hidden{
+    display:none;
+}
+
+/* RSVP */
+
+.rsvp{
+    max-width:760px;
+
+    margin:auto;
+
+    padding:30px;
+
+    border:1px solid var(--line);
+
+    border-radius:28px;
+
+    background:var(--glass);
+
+    backdrop-filter:blur(15px);
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+
+    margin-bottom:15px;
+}
+
+.field.full{
+    grid-column:1/-1;
+}
+
+label{
+    font-size:11px;
+    letter-spacing:.08em;
+    color:#b9c7dc;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+
+    border:1px solid var(--line);
+
+    border-radius:14px;
+
+    background:rgba(0,0,0,.2);
+
+    color:white;
+
+    padding:13px 14px;
+
+    outline:none;
+}
+
+select option{
+    background:#071225;
+    color:white;
+}
+
+textarea{
+    min-height:105px;
+    resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:rgba(156,201,255,.6);
+}
+
+.submit-btn{
+    width:100%;
+    margin-top:5px;
+}
+
+.submit-btn:disabled{
+    opacity:.6;
+    cursor:wait;
+    transform:none;
+}
+
+.form-status{
+    text-align:center;
+
+    margin-top:15px;
+
+    min-height:25px;
+
+    font-size:12px;
+
+    color:#bcd3f4;
+}
+
+/* FINAL */
+
+.final-invitation{
+    text-align:center;
+
+    padding-bottom:130px;
+}
+
+.final-stars{
+    font-size:25px;
+
+    letter-spacing:.25em;
+
+    margin-bottom:25px;
+
+    opacity:.8;
+}
+
+.final-small{
+    font-size:11px;
+
+    letter-spacing:.2em;
+
+    text-transform:uppercase;
+}
+
+.final-invitation h2{
+    margin:15px 0 28px;
+}
+
+.answer-text{
+    margin-top:20px;
+
+    color:#c8dbff;
+}
+
+/* STAR EXPLOSION */
+
+.explosion-star{
+    position:fixed;
+
+    z-index:100;
+
+    pointer-events:none;
+
+    animation:
+        explode 1.4s ease-out forwards;
+}
+
+@keyframes explode{
+
+    from{
+        opacity:1;
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    to{
+        opacity:0;
+
+        transform:
+            translate(var(--x),var(--y))
+            scale(.3);
+    }
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+
+    padding:30px;
+
+    color:#65738a;
+
+    font-size:11px;
+}
+
+/* MOBILE */
+
+@media(max-width:760px){
+
+    section{
+        padding:75px 5vw;
+    }
+
+    .cards,
+    .gallery,
+    .info-grid,
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .field.full{
+        grid-column:auto;
+    }
+
+    .nav{
+        width:94%;
+
+        justify-content:space-around;
+    }
+
+    .nav a{
+        padding:9px 8px;
+
+        font-size:9px;
+    }
+
+    .music-row{
+        flex-wrap:wrap;
+    }
+
+    .music-info{
+        min-width:55%;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="nav">
+
+    <a href="#beranda">
+        Beranda
+    </a>
+
+    <a href="#jelajahi">
+        Jelajahi
+    </a>
+
+    <a href="#karya">
+        Karya
+    </a>
+
+    <a href="#acara">
+        Acara
+    </a>
+
+    <a href="#rsvp">
+        Konfirmasi
+    </a>
+
+</nav>
+
+
+<main>
+
+
+<!-- =========================
+     BERANDA
+========================= -->
+
+<section class="hero" id="beranda">
+
+    <div class="hero-inner">
+
+        <div class="eyebrow">
+            Art Exhibition • 25 October 2026
+        </div>
+
+
+        <h1>
+
+            Mengarungi Samudra Langit,
+
+            <br>
+
+            <span class="hero-title">
+                Menemukan Iman
+            </span>
+
+        </h1>
+
+
+        <p class="hero-subtitle">
+
+            Di antara luasnya semesta,
+            ada keajaiban yang mengingatkan kita
+            bahwa setiap hamparan langit menyimpan
+            tanda-tanda kebesaran-Nya.
+
+        </p>
+
+
+        <div class="event-meta">
+
+            <span class="pill">
+                25 OCTOBER 2026
+            </span>
+
+            <span class="pill">
+                08.00–12.00 WIB
+            </span>
+
+            <span class="pill">
+                Auning Mubarak
+            </span>
+
+        </div>
+
+
+        <a
+            class="primary-btn"
+            href="#jelajahi"
+        >
+            mulai menjelajah ✦
+        </a>
+
+
+        <div class="scroll-note">
+            SCROLL TO EXPLORE THE UNIVERSE
+        </div>
+
+
+        <!-- MUSIC -->
+
+        <div class="music-panel">
+
+            <div class="music-row">
+
+                <div class="music-note">
+                    ♫
+                </div>
+
+
+                <div class="music-info">
+
+                    <strong>
+                        UP & UP
+                    </strong>
+
+                    <span>
+                        let the stars carry the moment
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="music-button"
+                    onclick="toggleMusic()"
+                    id="musicButton"
+                >
+                    ♫ play
+                </button>
+
+            </div>
+
+
+            <!--
+            MASUKKAN FILE AUDIO KE ROOT REPOSITORY GITHUB
+
+            NAMA FILE:
+            up-and-up.mp3
+
+            Contoh struktur:
+
+            galaxy-art-exhibition/
+            ├── index.html
+            └── up-and-up.mp3
+
+            -->
+
+            <audio
+                id="bgMusic"
+                class="audio-hidden"
+                preload="auto"
+            >
+
+                <source
+                    src="up-and-up.mp3"
+                    type="audio/mpeg"
+                >
+
+            </audio>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     JELAJAHI
+========================= -->
+
+<section id="jelajahi">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <div class="eyebrow">
+                Jelajahi
+            </div>
+
+            <h2>
+                Hamparan Semesta
+            </h2>
+
+            <p>
+
+                Perjalanan kecil untuk melihat langit
+                bukan hanya sebagai ruang yang luas,
+                tetapi sebagai undangan untuk berhenti,
+                mengagumi, dan merenung.
+
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <article class="card">
+
+                <div class="planet"></div>
+
+                <h3>
+                    Bintang
+                </h3>
+
+                <p>
+
+                    Cahaya yang datang dari kejauhan,
+                    menjadi pengingat bahwa sesuatu
+                    yang kecil pun dapat menerangi gelap.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="card">
+
+                <div
+                    class="planet"
+                    style="filter:hue-rotate(35deg)"
+                ></div>
+
+                <h3>
+                    Planet
+                </h3>
+
+                <p>
+
+                    Dunia-dunia yang bergerak dalam
+                    keteraturan, membawa kita pada rasa
+                    takjub terhadap luasnya ciptaan.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="card">
+
+                <div
+                    class="planet"
+                    style="filter:hue-rotate(100deg)"
+                ></div>
+
+                <h3>
+                    Galaksi
+                </h3>
+
+                <p>
+
+                    Jutaan bahkan miliaran bintang
+                    dalam satu hamparan besar yang membuat
+                    kita kembali menyadari keluasan semesta.
+
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     KARYA
+========================= -->
+
+<section id="karya">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <div class="eyebrow">
+                Karya
+            </div>
+
+            <h2>
+                Jejak di Antara Bintang
+            </h2>
+
+            <p>
+
+                Karya-karya yang mencoba menerjemahkan
+                rasa kagum, refleksi, dan pencarian makna
+                melalui visual.
+
+            </p>
+
+        </div>
+
+
+        <div class="gallery">
+
+
+            <article class="art">
+
+                <div>
+
+                    <small>
+                        01 • cosmic reflection
+                    </small>
+
+                    <h3>
+                        Langit yang Berbicara
+                    </h3>
+
+                    <p>
+
+                        Warna, cahaya, dan ruang bertemu
+                        dalam satu perjalanan visual.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="art">
+
+                <div>
+
+                    <small>
+                        02 • infinite horizon
+                    </small>
+
+                    <h3>
+                        Di Balik Hamparan
+                    </h3>
+
+                    <p>
+
+                        Sebuah ajakan untuk melihat keindahan
+                        yang sering luput ketika kita terlalu
+                        sibuk berjalan.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ACARA
+========================= -->
+
+<section id="acara">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <div class="eyebrow">
+                Acara
+            </div>
+
+            <h2>
+                Simpan Waktunya
+            </h2>
+
+            <p>
+
+                Datang, berjalan di antara karya,
+                dan temukan sudut pandangmu sendiri
+                tentang langit dan iman.
+
+            </p>
+
+        </div>
+
+
+        <div class="info-grid">
+
+
+            <div class="info-box">
+
+                <div class="eyebrow">
+                    Tanggal
+                </div>
+
+                <strong>
+                    25 October 2026
+                </strong>
+
+                <span>
+                    Minggu
+                </span>
+
+            </div>
+
+
+
+            <div class="info-box">
+
+                <div class="eyebrow">
+                    Waktu
+                </div>
+
+                <strong>
+                    08.00–12.00 WIB
+                </strong>
+
+                <span>
+
+                    Silakan hadir sesuai waktu
+                    yang nyaman dalam rentang acara.
+
+                </span>
+
+            </div>
+
+
+
+            <div class="info-box">
+
+                <div class="eyebrow">
+                    Lokasi
+                </div>
+
+                <strong>
+                    Auning Mubarak
+                </strong>
+
+                <span>
+
+                    Tempat pelaksanaan pameran seni.
+
+                </span>
+
+            </div>
+
+
+
+            <div class="info-box">
+
+                <div class="eyebrow">
+                    Dress / Mood
+                </div>
+
+                <strong>
+                    Come as you are
+                </strong>
+
+                <span>
+
+                    Yang penting hadir dan menikmati
+                    perjalanan karya.
+
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     RSVP GOOGLE SHEETS
+========================= -->
+
+<section id="rsvp">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <div class="eyebrow">
+                Konfirmasi Kehadiran
+            </div>
+
+            <h2>
+                Will you comin?
+            </h2>
+
+            <p>
+
+                Isi konfirmasi di bawah agar data
+                kehadiran tercatat oleh panitia.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="rsvp">
+
+            <form id="rsvpForm">
+
+
+                <div class="form-grid">
+
+
+                    <!-- NAMA -->
+
+                    <div class="field">
+
+                        <label for="name">
+                            NAMA
+                        </label>
+
+                        <input
+                            id="name"
+                            name="name"
+                            type="text"
+                            placeholder="Nama kamu"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- KEHADIRAN -->
+
+                    <div class="field">
+
+                        <label for="attendance">
+                            KEHADIRAN
+                        </label>
+
+                        <select
+                            id="attendance"
+                            name="attendance"
+                            required
+                        >
+
+                            <option value="">
+                                Pilih...
+                            </option>
+
+                            <option value="Hadir">
+                                Hadir
+                            </option>
+
+                            <option value="Tidak hadir">
+                                Tidak hadir
+                            </option>
+
+                            <option value="Masih belum pasti">
+                                Masih belum pasti
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- JUMLAH -->
+
+                    <div class="field">
+
+                        <label for="guests">
+                            JUMLAH ORANG
+                        </label>
+
+                        <input
+                            id="guests"
+                            name="guests"
+                            type="number"
+                            min="1"
+                            value="1"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- KONTAK -->
+
+                    <div class="field">
+
+                        <label for="contact">
+                            KONTAK (OPSIONAL)
+                        </label>
+
+                        <input
+                            id="contact"
+                            name="contact"
+                            type="text"
+                            placeholder="IG / WhatsApp"
+                        >
+
+                    </div>
+
+
+
+                    <!-- PESAN -->
+
+                    <div class="field full">
+
+                        <label for="message">
+                            PESAN (OPSIONAL)
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Tulis pesan untuk panitia..."
+                        ></textarea>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <button
+                    class="submit-btn"
+                    type="submit"
+                >
+                    kirim konfirmasi ✦
+                </button>
+
+
+                <div
+                    class="form-status"
+                    id="formStatus"
+                ></div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FINAL INVITATION
+========================= -->
+
+<section class="final-invitation">
+
+    <div class="container">
+
+        <div class="final-stars">
+            ✦　✧　⋆　✦　⋆　✧
+        </div>
+
+
+        <p class="final-small">
+            one last question before you leave...
+        </p>
+
+
+        <h2>
+            will you comin?
+        </h2>
+
+
+        <button
+            class="come-button"
+            onclick="starExplosion()"
+        >
+
+            <span>
+                will you comin?
+            </span>
+
+            <span>
+                ✦
+            </span>
+
+        </button>
+
+
+        <p
+            class="answer-text"
+            id="answer-text"
+        ></p>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+    mengarungi samudra langit,
+    menemukan iman di keajaiban dibalik
+    hamparan semesta ✦
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   AUDIO
+========================= */
+
+let musicPlaying = false;
+
+
+function toggleMusic(){
+
+    const music =
+        document.getElementById("bgMusic");
+
+    const button =
+        document.getElementById("musicButton");
+
+
+    if(music.paused){
+
+        music.play()
+
+        .then(() => {
+
+            musicPlaying = true;
+
+            button.textContent =
+                "Ⅱ pause";
+
+        })
+
+        .catch(() => {
+
+            button.textContent =
+                "tap again";
+
+        });
+
+    }
+
+    else{
+
+        music.pause();
+
+        musicPlaying = false;
+
+        button.textContent =
+            "♫ play";
+
+    }
+
+}
+
+
+document
+    .getElementById("bgMusic")
+    .addEventListener("ended", () => {
+
+        musicPlaying = false;
+
+        document
+            .getElementById("musicButton")
+            .textContent = "♫ play";
+
+    });
+
+
+
+/* =========================
+   GOOGLE SHEETS
+========================= */
+
+
+/*
+   SETELAH GOOGLE APPS SCRIPT
+   SUDAH DIBUAT,
+
+   GANTI TEKS DI BAWAH INI:
+
+   PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE
+
+   MENJADI CONTOH:
+
+   https://script.google.com/macros/s/XXXXXXXX/exec
+*/
+
+
+const GOOGLE_SCRIPT_URL =
+    "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+
+
+document
+    .getElementById("rsvpForm")
+    .addEventListener("submit", async function(e){
+
+        e.preventDefault();
+
+
+        const form = this;
+
+        const status =
+            document.getElementById("formStatus");
+
+        const button =
+            form.querySelector(".submit-btn");
+
+
+        /* CEK URL */
+
+        if(
+            GOOGLE_SCRIPT_URL.includes(
+                "PASTE_YOUR"
+            )
+        ){
+
+            status.textContent =
+                "Form sudah siap, tapi koneksi Google Sheets belum dipasang.";
+
+            return;
+
+        }
+
+
+        button.disabled = true;
+
+        button.textContent =
+            "mengirim...";
+
+        status.textContent = "";
+
+
+        /* AMBIL DATA */
+
+        const data =
+            new URLSearchParams();
+
+
+        data.append(
+            "name",
+            form.name.value
+        );
+
+
+        data.append(
+            "attendance",
+            form.attendance.value
+        );
+
+
+        data.append(
+            "guests",
+            form.guests.value
+        );
+
+
+        data.append(
+            "contact",
+            form.contact.value
+        );
+
+
+        data.append(
+            "message",
+            form.message.value
+        );
+
+
+        /* KIRIM KE GOOGLE APPS SCRIPT */
+
+        try{
+
+            await fetch(
+                GOOGLE_SCRIPT_URL,
+                {
+                    method:"POST",
+
+                    mode:"no-cors",
+
+                    body:data
+                }
+            );
+
+
+            status.textContent =
+                "Konfirmasi berhasil dikirim ✦ Terima kasih sudah mengisi!";
+
+
+            form.reset();
+
+
+            form.guests.value = 1;
+
+        }
+
+
+        catch(error){
+
+            status.textContent =
+                "Gagal mengirim. Coba cek koneksi internet lalu ulangi.";
+
+        }
+
+
+        button.disabled = false;
+
+        button.textContent =
+            "kirim konfirmasi ✦";
+
+    });
+
+
+
+/* =========================
+   STAR EXPLOSION
+========================= */
+
+function starExplosion(){
+
+    const symbols = [
+        "✦",
+        "✧",
+        "⋆",
+        "★"
+    ];
+
+
+    const answer =
+        document.getElementById(
+            "answer-text"
+        );
+
+
+    for(
+        let i = 0;
+        i < 65;
+        i++
+    ){
+
+        const star =
+            document.createElement(
+                "span"
+            );
+
+
+        star.className =
+            "explosion-star";
+
+
+        star.textContent =
+            symbols[
+                Math.floor(
+                    Math.random()
+                    * symbols.length
+                )
+            ];
+
+
+        const angle =
+            Math.random()
+            * Math.PI
+            * 2;
+
+
+        const distance =
+            120
+            + Math.random()
+            * 520;
+
+
+        star.style.left =
+            "50%";
+
+
+        star.style.top =
+            "75%";
+
+
+        star.style.setProperty(
+            "--x",
+            Math.cos(angle)
+            * distance
+            + "px"
+        );
+
+
+        star.style.setProperty(
+            "--y",
+            Math.sin(angle)
+            * distance
+            + "px"
+        );
+
+
+        star.style.fontSize =
+            (
+                8
+                + Math.random()
+                * 15
+            )
+            + "px";
+
+
+        star.style.animationDelay =
+            (
+                Math.random()
+                * .15
+            )
+            + "s";
+
+
+        document.body.appendChild(
+            star
+        );
+
+
+        setTimeout(
+            () => star.remove(),
+            1700
+        );
+
+    }
+
+
+    answer.textContent =
+        "then i'll see you among the stars ✦";
+
+}
+
+</script>
+
+</body>
+<audio id="bgMusic" preload="auto">
+    <source src="up-and-up.mp3" type="audio/mpeg">
+</audio>
+</html>
