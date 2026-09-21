@@ -841,8 +841,8 @@ footer{
                 id="bgMusic"
                 class="audio-hidden"
                 preload="auto"
-            >
-
+            
+                >
                 <source
                     src="up-and-up.mp3"
                     type="audio/mpeg"
@@ -1446,8 +1446,10 @@ function toggleMusic(){
 
         })
 
-        .catch(() => {
-
+        .catch((error) => {
+            console.error("Audio gagal diputar:", error);
+            alaert("Musik gagal diputar. Cek file up-and-up.mp3.");
+        });
             button.textContent =
                 "tap again";
 
@@ -1747,7 +1749,4 @@ function starExplosion(){
 </script>
 
 </body>
-<audio id="bgMusic" preload="auto">
-    <source src="up-and-up.mp3" type="audio/mpeg">
-</audio>
 </html>
